@@ -1,0 +1,23 @@
+/* Your app styles here */
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+#icon {
+  height: 200px;
+  width: 100%;
+}
+
+img{
+height: 100%;
+width: 100%;
+object-fit: contain;
+}
+

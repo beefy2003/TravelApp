@@ -1,0 +1,52 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.travel.app"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.travel.app"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.travel.app"
+    }
+  }
+}

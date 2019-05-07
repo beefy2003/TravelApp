@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+      * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+      * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+      * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+          * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>My App</title>
+
+  <link rel="stylesheet" href="framework7/css/framework7.bundle.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+  <body onload="OnDeviceReady()">
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with cover effect-->
+    <div class="panel panel-left panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Right Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Right panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs safe-areas">
+      <!-- Tabbar for switching views-tabs -->
+      <div class="toolbar tabbar-labels toolbar-bottom theme-dark">
+        <div class="toolbar-inner theme-dark">
+          <a href="#view-home" class="tab-link tab-link-active">
+            <i class="icon f7-icons ios-only">home</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">home_fill</i>
+            <i class="icon material-icons md-only">home</i>
+            <span class="tabbar-label">Home</span>
+          </a>
+          <a href="#view-catalog" class="tab-link">
+            <i class="icon f7-icons ios-only">list</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">list_fill</i>
+            <i class="icon material-icons md-only">view_list</i>
+            <span class="tabbar-label">Catalog</span>
+          </a>
+          <a href="#view-settings" class="tab-link">
+            <i class="icon f7-icons ios-only">settings</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">settings_fill</i>
+            <i class="icon material-icons md-only">settings</i>
+            <span class="tabbar-label">Settings</span>
+          </a>
+        </div>
+      </div>
+      <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
+      <div id="view-home" class="view view-main tab tab-active">
+        <!-- Page, data-name contains page name which can be used in page callbacks -->
+        <div class="page" data-name="home">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner"> 
+              <div class="left">
+            </div> 
+              <div class="center">
+                <img src="img/logo.png">
+              </div>  
+                <div class="right">
+              </div> 
+            </div>
+          </div>
+
+          <!-- Scrollable page content-->
+          <div class="page-content theme-dark">
+            <div class="block block-strong theme-dark">
+              <h2>Welcome to Travel Buddy</h2>
+              <h3>The travel app that is always with you.</h3>
+              <p>Are current location is:</p>
+              <div id="opencage"> Waiting for city data...
+            </div>
+            
+              <div class="list accordion-list">
+                <ul>
+                
+                  <li class="accordion-item"><a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Weather</div>
+                      </div></a>
+                    <div class="accordion-item-content">
+                      <div class="block">
+                          <div id="icon"> icon...</div>
+                          <div id="weather"> weather...</div><br>
+                          <button class="button button-raised button-fill" onclick="getWeather()"> Update Weather </button>
+                          <br>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="accordion-item"><a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Currency</div>
+                      </div></a>
+                    <div class="accordion-item-content">
+                      <div class="block">
+                          <p>Please enter an amount below to convert from the local currency to USD and also convert from USD to local currency.</p>
+                          <div id="currency"> summary...</div><br/>
+                          
+                          <div class="item-content item-input">
+                              <div class="item-inner">
+                              <div class="item-title item-label">Amount</div>
+                                <div class="item-input-wrap">
+                                <input type=number id="number"></input>
+                                </div>
+                              </div>
+                            </div> 
+                            <div class="item-content item-input">
+                              <div class="item-inner">
+                              <div class="item-title item-label">Result</div>
+                                <div class="item-input-wrap">
+                                <div id="result1"></div> 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="block block-strong">
+                              <div class="row">
+                                <div class="col-50">
+                                  <button class="button button-raised button-fill" onclick="convert()"> Convert from USD  </button>
+                                </div>
+                                <div class="col-50">
+                                  <button class="button button-raised button-fill" onclick="convert2()"> Convert to USD </button>
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+                  </li>
+
+                  <li class="accordion-item"><a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">Map</div>
+                      </div></a>
+                    <div class="accordion-item-content">
+                      <div class="block">
+                          <div id="map"> </div><br>
+                          <button class="button button-raised button-fill" onclick="getMap()"> Update Map </button>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="accordion-item"><a href="#" class="item-content item-link">
+                      <div class="item-inner">
+                        <div class="item-title">History</div>
+                      </div></a>
+                    <div class="accordion-item-content">
+                      <div class="block">
+                        <div id="data"></div><br>
+
+                        
+                        <div class="block block-strong">
+                            <div class="row">
+                              <div class="col-50">
+                                <button class="button button-raised button-fill" onclick="readFile()"> Get History </button>
+                              </div>
+                              <div class="col-50">
+                                <button class="button button-raised button-fill" onclick="delFile()"> Delete History </button>
+                              </div>
+                            </div>
+                          </div>
+
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="openCamera()"> Take Picture </button>
+                </div>
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="writeFile()"> Save location </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="getLocation()"> Take Picture </button>
+                </div>
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="openCage()"> Save location </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="block block-strong">
+              <div class="row">
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="getWeather()"> Take Picture </button>
+                </div>
+                <div class="col-50">
+                  <button class="button button-raised button-fill" onclick="getRate()"> Save location </button>
+                </div>
+              </div>
+            </div>
+
+          
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Catalog View -->
+      <div id="view-catalog" class="view tab">
+        <!-- Catalog page will be loaded here dynamically from /catalog/ route -->
+      </div>
+
+      <!-- Settings View -->
+      <div id="view-settings" class="view tab">
+        <!-- Settings page will be loaded here dynamically from /settings/ route -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Cordova --> 
+ 
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.bundle.js"></script>
+
+  <!-- App routes -->
+  <script src="js/routes.js"></script>
+
+  <!-- Your custom app scripts -->
+  <script src="js/app.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApFPNQ2WxbEueUXMJBPHjLenlPnFo68ls"></script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Buddy Travel",
+  "short_name": "Buddy Travel",
+  "version": "com.travel.app",
+  "description": "Travel App created by David Cavanagh",
+  "author": "Apache Cordova Team",
+  "icons": [
+    {
+      "src": "img/icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "start_url": "index.html",
+  "theme_color": "#2196f3"
+}
